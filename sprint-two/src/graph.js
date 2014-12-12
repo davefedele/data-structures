@@ -18,6 +18,7 @@ Graph.prototype.contains = function(node){
 };
 
 Graph.prototype.removeNode = function(node){
+  delete this.storage[node];
   // remove node from graph
   // remove edges
   // remove complementary edges
