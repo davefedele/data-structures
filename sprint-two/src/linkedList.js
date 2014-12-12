@@ -20,6 +20,15 @@ var LinkedList = function(){
   };
 
   list.contains = function(target){
+    var searchNode = list.head;
+    while (searchNode !== null) {
+      if (searchNode.value === target) {
+        return true;
+      } else {
+        searchNode = searchNode.next;
+      }
+    }
+    return false;
   };
 
   return list;
