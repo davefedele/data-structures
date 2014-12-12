@@ -1,16 +1,10 @@
 
 var Graph = function(){
   this.storage = {};
-  // edges
-  // how to store edges
-  // object with key of node name and value of array of edge names
 };
 
 Graph.prototype.addNode = function(node){
-  this.storage[node] = [];
-  // Put node in graph
-  // add edges
-  // add complementary edge
+  this.storage[node] = {};
 };
 
 Graph.prototype.contains = function(node){
@@ -19,15 +13,16 @@ Graph.prototype.contains = function(node){
 
 Graph.prototype.removeNode = function(node){
   delete this.storage[node];
-  // remove node from graph
-  // remove edges
   // remove complementary edges
 };
 
 Graph.prototype.hasEdge = function(fromNode, toNode){
+  return this.storage[fromNode][toNode] === true;
 };
 
 Graph.prototype.addEdge = function(fromNode, toNode){
+  this.storage[fromNode][toNode] = true;
+  this.storage[toNode][fromNode] = true;
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
