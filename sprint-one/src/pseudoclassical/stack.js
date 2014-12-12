@@ -1,17 +1,22 @@
 var Stack = function() {
   this.count = 0;
+  this.storage = {};
 };
 
-Stack.prototype = {
-  push : function() {
+Stack.prototype.push = function(value) {
     this.count++;
-  },
-  pop  : function() {
+    this.storage[this.count] = value;
+  };
+  
+Stack.prototype.pop = function() {
+    var temp = this.storage[this.count];
+    delete this.storage[this.count];
     if (this.count > 0) {
       this.count--;
     }
-  },
-  size : function() {return this.count}
+    return temp;
+  };
+  
+Stack.prototype.size = function() {
+    return this.count;
 };
-
-
