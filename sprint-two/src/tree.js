@@ -20,7 +20,16 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
-
+  if (this.value === target) {
+    return true;
+  } else {
+    for (var i = 0, l = this.children.length; i < l; i += 1) {
+      if (this.children[i].contains(target) === true) {
+        return true;
+      }
+    }
+    return false;
+  }
 };
 
 
