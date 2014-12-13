@@ -61,6 +61,9 @@ BinarySearchTree.prototype.contains = function(value) {
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
 /* depthfirstlog: iterate through values from top down and execute callback.
 */
+  callback(this.value);
+  this.right && this.right.depthFirstLog(callback);
+  this.left && this.left.depthFirstLog(callback);
 };
 
 
