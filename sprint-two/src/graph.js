@@ -12,8 +12,10 @@ Graph.prototype.contains = function(node){
 };
 
 Graph.prototype.removeNode = function(node){
+  _.each(this.storage[node], function(val, key) {
+    delete this.storage[val][key];
+  })
   delete this.storage[node];
-  // remove complementary edges
 };
 
 Graph.prototype.hasEdge = function(fromNode, toNode){
@@ -26,9 +28,14 @@ Graph.prototype.addEdge = function(fromNode, toNode){
 };
 
 Graph.prototype.removeEdge = function(fromNode, toNode){
+  delete this.storage[fromNode][toNode];
+  delete this.storage[toNode][fromNode];
 };
 
 Graph.prototype.forEachNode = function(cb){
+  for (var key in this.storage) {
+    cb(key);
+  }
 };
 
 /*
