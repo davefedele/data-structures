@@ -20,6 +20,20 @@ var LinkedList = function(){
     return formerHead;
   };
 
+  list.removeTail = function(){
+    //if there is an empty list
+    if (list.tail === null){
+    } 
+    //list 3
+    else if (list.tail.previous !== undefined ) {
+      //set list.tail = tail.previous
+      // list.tail = list.tail.previous;
+    }
+    //all other lists
+  
+
+  };
+
   list.addToHead = function(value){
     if (list.head === null) {
       list.head = Node(value);
