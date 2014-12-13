@@ -35,13 +35,31 @@ treeMethods.contains = function(target){
 };
 
 treeMethods.removeFromParent = function(){
-  //find the parents = use parent property
-  var parent = this.parent;
-  //remove the current node from its parents children
-  
-  //set current node's parent property to null
-  //return dereferenced node?
-
+  //if there is a parent do it
+  if (this.parent !== null){
+    //find the parents = use parent property
+    var parent = this.parent;
+    //remove the current node from its parents children
+    //remove this from parent's children
+    //get index of child in parents children arr
+    var location;
+    for (var i=0; i<parent.children.length; i++){
+      //loop through parent schildren
+      //compare value to current node
+      //if a match then i is the location in the array
+      if (parent.children[i].value === this.value) {
+        location = i;
+      }
+    }
+    //remove it
+    var child = parent.children.splice(location, 1);
+    //set current node's parent property to null
+    this.parent = null;
+    //return dereferenced node?
+    return child[0];
+  } else {
+    return false;
+  }
 };
 
 treeMethods.traverse = function(){
