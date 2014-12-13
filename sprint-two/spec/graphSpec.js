@@ -33,6 +33,7 @@ describe('graph', function() {
     graph.addNode('penguins');
     graph.addEdge('penguins', 'puppies');
     expect(graph.hasEdge('penguins', 'puppies')).to.equal(true);
+    expect(graph.hasEdge('puppies', 'penguins')).to.equal(true);
     expect(graph.hasEdge('penguins', 'kittens')).to.equal(false);
   });
 
@@ -41,8 +42,10 @@ describe('graph', function() {
     graph.addNode('satsumas');
     graph.addEdge('satsumas', 'apples');
     expect(graph.hasEdge('apples', 'satsumas')).to.equal(true);
+    expect(graph.hasEdge('satsumas', 'apples')).to.equal(true);
     graph.removeEdge('satsumas', 'apples');
     expect(graph.hasEdge('apples', 'satsumas')).to.equal(false);
+    expect(graph.hasEdge('satsumas', 'apples')).to.equal(false);
   });
 
   it('should execute a callback on each node in the graph', function() {
