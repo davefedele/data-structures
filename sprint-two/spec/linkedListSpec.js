@@ -51,5 +51,11 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should point to the previous node', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.tail.previous.value).to.equal(4);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
