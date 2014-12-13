@@ -20,6 +20,19 @@ var LinkedList = function(){
     return formerHead;
   };
 
+  list.addToHead = function(value){
+    if (list.head === null) {
+      list.head = Node(value);
+      list.tail = list.head
+    } else {
+      var oldHead = list.head;
+      list.head = Node(value);
+      list.head.next = oldHead;
+      oldHead.previous = list.head;
+    }
+
+  };
+
   list.contains = function(target){
     var searchNode = list.head;
     while (searchNode !== null) {
