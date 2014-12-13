@@ -72,6 +72,11 @@ describe('linkedList', function() {
   });
 
   it('should remove a value from the end of the list and return its value', function(){
+    expect(linkedList.removeTail()).to.be.false;
+    linkedList.addToTail(4);
+    expect(linkedList.removeTail()).to.equal(4);
+    expect(linkedList.tail).to.be.null;
+    expect(linkedList.head).to.be.null;
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     expect(linkedList.tail.value).to.equal(5);
