@@ -5,17 +5,27 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(i, v);
+  var value = this._storage.get(i);
+  value = value || {};
+  value[k] = v;
+
+  this._storage.set(i, value);
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(i) || null;
+  var temp = this._storage.get(i);
+  return  temp === undefined ? null : temp[k];
 };
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  this._storage.set(i, undefined);
+  var temp = this._storage.get(i);
+  delete temp[k];
+  if (Object.keys(temp).length === 0 ) {
+    temp = undefined;
+  }
+  this._storage.set(i, temp);
 
 };
 
