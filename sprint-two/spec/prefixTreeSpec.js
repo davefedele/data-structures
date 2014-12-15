@@ -24,16 +24,15 @@ describe('prefixTree', function() {
     // expect(prefixTree.letters["c"].letters["a"].letters["r"]).not.to.be.null;
     expect(prefixTree.addWord("cash")).to.be.true;
     // expect(prefixTree.letters["c"].letters["a"].letters["s"]).letters["h"]).not.to.be.null;
-  debugger;
   });
 
   it('should be able to find a word.', function() {
     prefixTree.addWord("cat");
-    expect(prefixTree.findWord("cat")).to.equal("cat");
+    expect(prefixTree.findWord("cat")).to.be.true;
     prefixTree.addWord("car");
-    expect(prefixTree.findWord("car")).to.equal("car");
+    expect(prefixTree.findWord("car")).to.be.true;
     prefixTree.addWord("cash");
-    expect(prefixTree.findWord("cash")).to.equal("cash");
+    expect(prefixTree.findWord("cash")).to.be.true;
   });
 
   it('should return all potential matches.', function() {
