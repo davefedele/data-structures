@@ -7,18 +7,23 @@ var PrefixTree = function() {
 var prefixTreeMethods = {};
 
 prefixTreeMethods.addWord = function(word){
-  var letter = word[0];
-  if ( !this.letters[letter] ) {
-    this.letters[letter] = PrefixTree();
-  }
-  if ( word.length > 1) {
-    return this.letters[letter].addWord(word.slice(1));
-  } else {
-    return true;
-  }
+  var key = word[0];
+  this.letters[key] || (this.letters[key] = PrefixTree());
+  return word.length > 1 ?
+    this.letters[key].addWord(word.slice(1)) :
+    true;
 };
 
-prefixTreeMethods.findWord = function(){};
-prefixTreeMethods.returnPotentialWords = function(){};
+prefixTreeMethods.findWord = function(word){
+  var key = word[0];
+  return this.letters[key] ?
+    (word.length > 1 ? this.letters[key].findWord(word.slice(1)) : true) :
+    false;
+};
+
+prefixTreeMethods.returnPotentialWords = function(string){
+  
+
+};
 prefixTreeMethods.selectWord = function(){};
 prefixTreeMethods.removeWord = function(){};
